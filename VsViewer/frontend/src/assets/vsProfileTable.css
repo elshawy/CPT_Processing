@@ -1,0 +1,48 @@
+.vs-raw {
+  height: 63vh !important;
+  margin-bottom: 0 !important;
+}
+
+.vs-scroll-tbl {
+  max-height: 58.5vh;
+}
+
+.vs-info {
+  margin-top: 2vh !important; 
+  height: 9vh;
+}
+
+.vs-tbl-width {
+  width: 28vw;
+  border-left-width: 0 !important;
+  border-right-width: 0 !important;
+  padding: 0 !important;
+}
+
+.vs-min-max{
+  margin-left: -4.7vw;
+  width: 12vw !important;
+  height: 5vh;
+}
+
+.vs-removed{
+  width: 14vw !important;
+  height: 4.6vh;
+}
+
+.text-size {
+  font-size: calc(0.55vh + 0.55vw);
+  padding: 0.5vh !important;
+}
+
+.rem-label {
+  width: 8vw !important;
+}
+
+.vs-col-size {
+  font-size: calc(0.55vh + 0.55vw);
+  width: 7vw;
+  height: 2vh;
+  text-align: center;
+  padding: 0.6vh !important;
+}

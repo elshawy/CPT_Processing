@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: VsViewer
+Version: 1.0
+Summary: Vs30 Web Calculator
+Home-page: https://github.com/ucgmsim/Vs30
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: pyyaml
+Requires-Dist: flask
+Requires-Dist: flask_cors
+Requires-Dist: uwsgi

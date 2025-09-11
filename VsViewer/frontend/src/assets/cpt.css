@@ -1,0 +1,244 @@
+.process-cpt {
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 17vw !important;
+}
+
+.cpt-file-manage {
+    width: 17vw !important;
+    margin-left: 3.25vw;
+    padding: 0 !important;
+}
+
+.hr {
+    border-top: 1px solid silver;
+    margin-bottom: 1.25vh;
+    margin-top: 1.25vh;
+}
+
+.form-section {
+    width: 17vw;
+}
+
+.form {
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+
+.form-label {
+    font-size: calc(0.55vh + 0.55vw);
+    font-weight: 500;
+    margin-top: 0.5vh;
+}
+
+.form-file-input-section {
+    width: 16vw !important;
+    height: 4.5vh !important;
+    margin-left: 3% !important;
+    margin-top: 0.5vh !important;
+    padding-right: 0 !important;
+}
+
+.form-file-input {
+    align-items: right !important;
+    font-size: calc(0.55vh + 0.55vw);
+    margin-top: 0.5vh !important;
+    width: 11vw !important;
+    padding: 0 !important;
+    margin-left: 2.9vw;
+}
+
+.switch-input-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 4vh;
+}
+
+.normal-label {
+    font-size: calc(0.55vh + 0.55vw);
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+}
+
+.highlight-label {
+    font-size: calc(0.55vh + 0.55vw);
+    font-weight: 500;
+    color: #0d6efd;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+}
+
+.form-section-title {
+    font-size: calc(0.7vh + 0.7vw);
+    font-weight: 700;
+}
+
+.file-section {
+    margin-top: 6vh;
+    height: 26vh;
+    width: 17vw !important;
+}
+
+.file-table-section {
+    height: 19vh;
+    width: 17vw;
+    margin-top: 0vh;
+}
+
+.file-info {
+    width: 1vw !important;
+    padding: 0 !important;
+    margin-top: 0.8vh !important;
+}
+
+.add-cpt-section {
+    margin-left: 3.75vw !important;
+    width: 10vw !important;
+    height: 5vh !important;
+    margin-top: 0.5vh !important;
+    margin-bottom: 1vh !important;
+}
+.add-cpt-btn {
+    font-size: calc(0.6vh + 0.6vw) !important;
+    margin-left: 1.5vw !important;
+    margin-top: 0.5vh !important;
+    width: 6vw !important;
+    height: 4.5vh;
+}
+
+.cpt-input {
+    transition: border 2s;
+}
+
+.select-cpt {
+    min-width: 20vw;
+    padding-bottom: 0.5vw;
+}
+
+.center-elm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.outline {
+    border: 1px solid silver;
+}
+
+.cpt-data {
+    margin-right: -5%;
+    height: 81vh;
+}
+
+.cpt-table-section {
+    margin-top: 1vh !important;
+    height: 78vh;
+    width: 30vw !important;
+    margin-left: 3.25vw;
+    padding: 0 !important;
+}
+
+.cpt-table {
+    height: 70vh;
+    width: 30vw !important;
+}
+
+.cpt-plot-section {
+    margin-top: 1vh !important;
+    height: 78vh !important;
+    width: 40vw !important;
+    margin-left: 3.25vw;
+    padding: 0 !important;
+}
+
+.cpt-plot {
+    height: 70vh !important;
+    width: 40vw !important;
+}
+
+.cor-section {
+    height: 36vw;
+    margin-bottom: 1vw;
+}
+
+.select-cor {
+    min-width: 20vw;
+    margin-bottom: 1vh;
+}
+
+.vs-preview-section {
+    margin-left: 3.25vw;
+    margin-bottom: 1vh;
+    height: 75vh;
+    width: 40vw !important;
+}
+
+.vs-preview-plot {
+    height: 70vh !important;
+    width: 40vw;
+    margin-bottom: 1vh;
+}
+
+.weights {
+    margin-left: 18.875vw;
+    margin-top: 3vh !important;
+    padding-top: 2vh;
+    margin-bottom: 1vh;
+    height: 70vh;
+    width: 25vw !important;
+}
+
+.cpt-weights {
+    margin-bottom: 2vh;
+    height: 26vh;
+    width: 20vw;
+}
+
+.cor-weights {
+    height: 26vh;
+    width: 20vw;
+}
+
+.preview-btn {
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+}
+
+.select-box {
+    text-indent: 37px;
+    width: 25vw;
+    font-size: calc(0.6vh + 0.6vw) !important;
+}
+
+/* Select box inside */
+.css-12jo7m5 {
+    text-indent: 0 !important;
+}
+/* Select box dropdown */
+.css-26l3qy-menu {
+    text-indent: 0 !important;
+}
+
+
+.small-select-box {
+    width: 20vw;
+    font-size: calc(0.6vh + 0.6vw) !important;
+}
+
+.cpt-flash-warning {
+    transition: border 1s;
+    border: 2px solid #ff0000b7 !important;
+}
+
+.trans-btn {
+    transition: background-color 0.25s !important;
+}
+
+.temp-border {
+    transition: border 2s;
+    border: 2px solid white;
+}

@@ -1,0 +1,50 @@
+.file-table {
+  max-height: 15vh;
+  width: 11vw !important;
+  border-left-width: 0 !important;
+  border-right-width: 0 !important;
+  padding: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.file-col-size {
+  font-size: calc(0.55vh + 0.55vw);
+  text-align: center;
+  padding: 1vh !important;
+  max-width: 7vw;
+  height: 2vh !important;
+}
+
+.remove-col-size {
+  width: 2vw !important;
+  height: 2vh !important;
+  padding: 0 !important;
+}
+
+.row-file-table {
+  width: 11vw;
+  height: 2vh !important;
+}
+
+.scroll-file-tbl {
+  margin-top: 0;
+  max-height: 17.5vh;
+  width: 11vw;
+}
+
+.info-width {
+  width: 9.5vw !important;
+  margin-right: -1vw !important;
+}
+
+.file-info-tbl {
+  width: 1vw !important;
+  padding: 0 !important;
+}
+
+.btn-size {
+  height: 2vh !important;
+  width: 2vw !important;
+  padding: 0 !important;
+  margin-top: 1.25vh !important
+}
