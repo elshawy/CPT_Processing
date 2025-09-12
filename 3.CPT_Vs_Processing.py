@@ -573,7 +573,7 @@ def run_mode2_workflow(cpt_folder, Vs_folder, output_folder):
 
 if __name__ == "__main__":
     if len(sys.argv) < 5:
-        print("Usage: python integrated_analysis_v5_revised.py <mode:1|2|3> <CPT_folder> <Vs_folder> <output_folder>")
+        print("Usage: python 3.CPT_Vs_Processing.py <mode:1|2|3> <CPT_folder> <Vs_folder> <output_folder>")
         print("  <Mode> 1: Calculate geometric mean for Vs data")
         print("  <Mode> 2: Merge CPT-Vs data and perform layer analysis")
         print("  <Mode> 3: Merge all Vs data into CPT profiles")
@@ -616,3 +616,4 @@ if __name__ == "__main__":
     else:
         print("Invalid mode. Please select 1, 2, or 3.")
         sys.exit(1)
+
