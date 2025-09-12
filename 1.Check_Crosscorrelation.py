@@ -26,16 +26,9 @@ from datetime import datetime
 if len(sys.argv) > 1:
     folder_path = sys.argv[1]
 else:
-    # Use a default path if no argument is provided
-    folder_path = "./"
+    print("\n[Usage] python 1.Check_Crosscorrelation.py <input_folder>\n")
 
-# Generate a timestamp for the output folder
-timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-output_folder_name = os.path.basename(os.path.normpath(folder_path)) + f"_CORRECTED_DATA_{timestamp}"
-output_folder = os.path.join(os.getcwd(), output_folder_name)
-
-print(f"Input folder: {folder_path}")
-print(f"Output folder: {output_folder}")
+    sys.exit(1)
 
 # --------------------
 # Paths & folders
