@@ -29,7 +29,10 @@ else:
     print("\n[Usage] python 1.Check_Crosscorrelation.py <input_folder>\n")
 
     sys.exit(1)
-
+    
+timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+output_folder_name = os.path.basename(os.path.normpath(folder_path)) + f"_CORRECTED_DATA_{timestamp}"
+output_folder = os.path.join(os.getcwd(), output_folder_name)
 # --------------------
 # Paths & folders
 # --------------------
