@@ -137,14 +137,14 @@ def extract_key(filename):
 # -------------------------------------------------------------
 # Workflow 1: Process Geometric Means
 # -------------------------------------------------------------
-def process_geometric_mean(Vs_folder, cpt_folder, output_folder, combined_output):
+def process_geometric_mean(Vs_folder, Estimated_Vs_cpt_folder, output_folder, combined_output):
     """
     Executes a workflow to calculate geometric means for both estimated
     and measured Vs data, saving results as individual and combined CSVs.
     
     Args:
         Vs_folder (str): Path to the folder containing measured Vs data.
-        cpt_folder (str): Path to the folder containing estimated Vs data.
+        Estimated_Vs_cpt_folder (str): Path to the folder containing estimated Vs data.
         output_folder (str): The root directory for all output files.
         combined_output (str): The path for the final combined CSV file.
     """
@@ -153,7 +153,7 @@ def process_geometric_mean(Vs_folder, cpt_folder, output_folder, combined_output
 
     all_results = []
     vs_files = {extract_key(os.path.basename(f)): f for f in glob.glob(os.path.join(Vs_folder, "*.csv"))}
-    cpt_files = {extract_key(os.path.basename(f)): f for f in glob.glob(os.path.join(cpt_folder, "*.csv"))}
+    cpt_files = {extract_key(os.path.basename(f)): f for f in glob.glob(os.path.join(Estimated_Vs_cpt_folder, "*.csv"))}
     common_keys = set(vs_files.keys()) & set(cpt_files.keys())
 
     for key in common_keys:
@@ -184,13 +184,13 @@ def process_geometric_mean(Vs_folder, cpt_folder, output_folder, combined_output
 # -------------------------------------------------------------
 # Workflow 3: Merge All Measured Vs into CPT Profiles
 # -------------------------------------------------------------
-def merge_all_profiles(cpt_folder, Vs_folder, output_folder):
+def merge_all_profiles(Estimated_Vs_cpt_folder, Vs_folder, output_folder):
     """
     Merges all measured Vs data into the corresponding CPT profiles based on
     a matching key, saving individual and combined results.
     
     Args:
-        cpt_folder (str): Path to the folder with CPT profiles.
+        Estimated_Vs_cpt_folder (str): Path to the folder with CPT profiles.
         Vs_folder (str): Path to the folder with measured Vs data.
         output_folder (str): The root directory for all output files.
     """
@@ -198,7 +198,7 @@ def merge_all_profiles(cpt_folder, Vs_folder, output_folder):
     os.makedirs(indiv_folder, exist_ok=True)
 
     final_df = pd.DataFrame()
-    cpt_files = glob.glob(os.path.join(cpt_folder, '*.csv'))
+    cpt_files = glob.glob(os.path.join(Estimated_Vs_cpt_folder, '*.csv'))
     vs_dict = {extract_key(os.path.basename(f)): f for f in glob.glob(os.path.join(Vs_folder, '*.csv'))}
 
     for qc_file in cpt_files:
@@ -443,22 +443,22 @@ def analyze_cpt_for_layers(file_path, output_csv_folder, output_plot_folder, min
 # -------------------------------------------------------------
 # Main Execution Block
 # -------------------------------------------------------------
-def run_mode2_workflow(cpt_folder, Vs_folder, output_folder):
+def run_mode2_workflow(Estimated_Vs_cpt_folder, Vs_folder, output_folder):
     """
     Executes the Vs-CPT data merging and layer analysis workflow.
     - Performs layer analysis first, then final merging.
     
     Args:
-        cpt_folder (str): Path to the folder with CPT data files.
+        Estimated_Vs_cpt_folder (str): Path to the folder with CPT data files.
         Vs_folder (str): Path to the folder with Vs data files.
         output_folder (str): The root directory for all output.
     """
     print("\n[Vs-CPT Data Merging and Layer Analysis Mode]")
     print("\n--- Current Execution Information ---")
-    print(f"Input CPT Folder: {os.path.abspath(cpt_folder)}")
+    print(f"Input CPT Folder: {os.path.abspath(Estimated_Vs_cpt_folder)}")
     print(f"Input Vs Folder: {os.path.abspath(Vs_folder)}")
 
-    if not os.path.isdir(cpt_folder) or not os.path.isdir(Vs_folder):
+    if not os.path.isdir(Estimated_Vs_cpt_folder) or not os.path.isdir(Vs_folder):
         print("Error: The specified CPT or Vs folder does not exist.")
         print("Please check the paths. It is recommended to use quotation marks for the full path.")
         sys.exit(1)
@@ -480,7 +480,7 @@ def run_mode2_workflow(cpt_folder, Vs_folder, output_folder):
     print("=============================================================")
     print("\n--- Step 1: Analyzing CPT files for layers and generating statistics ---")
     
-    cpt_files = glob.glob(os.path.join(cpt_folder, '*.csv'))
+    cpt_files = glob.glob(os.path.join(Estimated_Vs_cpt_folder, '*.csv'))
     if not cpt_files:
         print("Warning: No CPT files found to analyze. Exiting program.")
         sys.exit(0)
@@ -573,14 +573,14 @@ def run_mode2_workflow(cpt_folder, Vs_folder, output_folder):
 
 if __name__ == "__main__":
     if len(sys.argv) < 5:
-        print("Usage: python 3.CPT_Vs_Processing.py <mode:1|2|3> <CPT_folder> <Vs_folder> <output_folder>")
+        print("Usage: python 3.CPT_Vs_Processing.py <mode:1|2|3> <Estimated_Vs_cpt_folder> <Vs_folder> <output_folder>")
         print("  <Mode> 1: Calculate geometric mean for Vs data")
         print("  <Mode> 2: Merge CPT-Vs data and perform layer analysis")
         print("  <Mode> 3: Merge all Vs data into CPT profiles")
         sys.exit(1)
 
     mode = sys.argv[1]
-    cpt_folder = sys.argv[2]
+    Estimated_Vs_cpt_folder = sys.argv[2]
     Vs_folder = sys.argv[3]
     output_folder = sys.argv[4]
 
@@ -591,7 +591,7 @@ if __name__ == "__main__":
         print(f"Error: Could not create output folder '{output_folder}'. {e}")
         sys.exit(1)
 
-    if not os.path.isdir(cpt_folder) or not os.path.isdir(Vs_folder):
+    if not os.path.isdir(Estimated_Vs_cpt_folder) or not os.path.isdir(Vs_folder):
         print("Error: One or both input folders do not exist.")
         sys.exit(1)
 
@@ -601,19 +601,20 @@ if __name__ == "__main__":
         main_output_dir = os.path.join(output_folder, f"Mode1_Analysis_Results_{timestamp}")
         os.makedirs(main_output_dir, exist_ok=True)
         combined_output = os.path.join(main_output_dir, "Mode1_combined_results.csv")
-        process_geometric_mean(Vs_folder, cpt_folder, main_output_dir, combined_output)
+        process_geometric_mean(Vs_folder, Estimated_Vs_cpt_folder, main_output_dir, combined_output)
 
     elif mode == '2':
-        run_mode2_workflow(cpt_folder, Vs_folder, output_folder)
+        run_mode2_workflow(Estimated_Vs_cpt_folder, Vs_folder, output_folder)
         
     elif mode == '3':
         print("\n[Merging All Profiles Mode]")
         timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
         main_output_dir = os.path.join(output_folder, f"Mode3_Analysis_Results_{timestamp}")
         os.makedirs(main_output_dir, exist_ok=True)
-        merge_all_profiles(cpt_folder, Vs_folder, main_output_dir)
+        merge_all_profiles(Estimated_Vs_cpt_folder, Vs_folder, main_output_dir)
 
     else:
         print("Invalid mode. Please select 1, 2, or 3.")
         sys.exit(1)
+
 
