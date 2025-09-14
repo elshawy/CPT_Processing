@@ -70,12 +70,12 @@ def calculate_vs_intervals(depths):
     return intervals
 
 # -------------------------------------------------------------
-# Geometric Mean Calculation: Estimated vs. Measured Vs
+# c Mean Calculation: Estimated vs. Measured Vs
 # Measured Vs selected based on the middle of the interval (depth_mid)
 # -------------------------------------------------------------
-def compute_geometric_means(vs_intervals, measured_vs, estimated_vs):
+def compute_c_means(vs_intervals, measured_vs, estimated_vs):
     """
-    Computes the geometric mean for both estimated and measured Vs values
+    Computes the c mean for both estimated and measured Vs values
     within specified depth intervals.
     
     Args:
@@ -84,7 +84,7 @@ def compute_geometric_means(vs_intervals, measured_vs, estimated_vs):
         estimated_vs (pd.DataFrame): DataFrame with estimated Vs profiles.
         
     Returns:
-        pd.DataFrame: A DataFrame containing the geometric mean results
+        pd.DataFrame: A DataFrame containing the c mean results
                       for each interval.
     """
     results = []
@@ -575,9 +575,9 @@ def run_mode2_workflow(Estimated_Vs_cpt_folder, Vs_folder, output_folder):
 if __name__ == "__main__":
     if len(sys.argv) < 5:
         print("Usage: python 3.CPT_Vs_Processing.py <mode:1|2|3> <Estimated_Vs_cpt_folder> <Vs_folder> <output_folder>")
-        print("  <Mode> 1: Calculate geometric mean for Vs data")
-        print("  <Mode> 2: Merge CPT-Vs data and perform layer analysis")
-        print("  <Mode> 3: Merge all Vs data into CPT profiles")
+        print("  <Mode> 1: Merge after calculating geometric mean based on measured Vs")
+        print("  <Mode> 2: Merge CPT-Vs data after performing layer analysis based on qc & Ic")
+        print("  <Mode> 3: Merge all values")
         sys.exit(1)
 
     mode = sys.argv[1]
@@ -617,6 +617,7 @@ if __name__ == "__main__":
     else:
         print("Invalid mode. Please select 1, 2, or 3.")
         sys.exit(1)
+
 
 
 
