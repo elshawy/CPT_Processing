@@ -181,64 +181,6 @@ def process_geometric_mean(Vs_folder, Estimated_Vs_cpt_folder, output_folder, co
 
     print(f"Geometric mean calculations complete. Results saved to '{output_folder}'.")
 
-# -------------------------------------------------------------
-# Workflow 3: Merge All Measured Vs into CPT Profiles
-# -------------------------------------------------------------
-def merge_all_profiles(Estimated_Vs_cpt_folder, Vs_folder, output_folder):
-    """
-    Merges all measured Vs data into the corresponding CPT profiles based on
-    a matching key, saving individual and combined results.
-    
-    Args:
-        Estimated_Vs_cpt_folder (str): Path to the folder with CPT profiles.
-        Vs_folder (str): Path to the folder with measured Vs data.
-        output_folder (str): The root directory for all output files.
-    """
-    indiv_folder = os.path.join(output_folder, "individual")
-    os.makedirs(indiv_folder, exist_ok=True)
-
-    final_df = pd.DataFrame()
-    cpt_files = glob.glob(os.path.join(Estimated_Vs_cpt_folder, '*.csv'))
-    vs_dict = {extract_key(os.path.basename(f)): f for f in glob.glob(os.path.join(Vs_folder, '*.csv'))}
-
-    for qc_file in cpt_files:
-        fname = os.path.basename(qc_file)
-        code = extract_key(fname)
-        df_qc = pd.read_csv(qc_file)
-
-        if code in vs_dict:
-            df_vs = pd.read_csv(vs_dict[code]).sort_values('d').reset_index(drop=True)
-
-            if df_vs.loc[0, 'd'] > 0:
-                first_vs = df_vs.loc[0, 'vs']
-                new_row = pd.DataFrame([{'d': 0, 'vs': first_vs}])
-                df_vs = pd.concat([new_row, df_vs], ignore_index=True).sort_values('d').reset_index(drop=True)
-
-            df_vs['d'] = df_vs['d'].astype(float)
-
-            matched = pd.merge_asof(
-                df_qc[['Depth']].sort_values('Depth'),
-                df_vs,
-                left_on='Depth',
-                right_on='d',
-                direction='backward'
-            )
-            matched = matched.set_index(df_qc.index)
-            df_qc['Measure Vs'] = matched['vs']
-        else:
-            df_qc['Measure Vs'] = None
-
-        # Save individual result
-        out_path = os.path.join(indiv_folder, f"{code}_merged.csv")
-        df_qc.to_csv(out_path, index=False)
-
-        # Add File Name column for combined output
-        df_qc.insert(0, "File Name", fname)
-        final_df = pd.concat([final_df, df_qc], ignore_index=True)
-
-    output_path = os.path.join(output_folder, 'Mode1_combined_results.csv')
-    final_df.to_csv(output_path, index=False, encoding='utf-8-sig')
-    print(f"All files have been merged and saved to: {output_path}")
 
 # =============================================================
 # Layer Analysis and Plotting (for Mode 2)
@@ -441,6 +383,65 @@ def analyze_cpt_for_layers(file_path, output_csv_folder, output_plot_folder, min
     return stats_df
 
 # -------------------------------------------------------------
+# Workflow 3: Merge All Measured Vs into CPT Profiles
+# -------------------------------------------------------------
+def merge_all_profiles(Estimated_Vs_cpt_folder, Vs_folder, output_folder):
+    """
+    Merges all measured Vs data into the corresponding CPT profiles based on
+    a matching key, saving individual and combined results.
+    
+    Args:
+        Estimated_Vs_cpt_folder (str): Path to the folder with CPT profiles.
+        Vs_folder (str): Path to the folder with measured Vs data.
+        output_folder (str): The root directory for all output files.
+    """
+    indiv_folder = os.path.join(output_folder, "individual")
+    os.makedirs(indiv_folder, exist_ok=True)
+
+    final_df = pd.DataFrame()
+    cpt_files = glob.glob(os.path.join(Estimated_Vs_cpt_folder, '*.csv'))
+    vs_dict = {extract_key(os.path.basename(f)): f for f in glob.glob(os.path.join(Vs_folder, '*.csv'))}
+
+    for qc_file in cpt_files:
+        fname = os.path.basename(qc_file)
+        code = extract_key(fname)
+        df_qc = pd.read_csv(qc_file)
+
+        if code in vs_dict:
+            df_vs = pd.read_csv(vs_dict[code]).sort_values('d').reset_index(drop=True)
+
+            if df_vs.loc[0, 'd'] > 0:
+                first_vs = df_vs.loc[0, 'vs']
+                new_row = pd.DataFrame([{'d': 0, 'vs': first_vs}])
+                df_vs = pd.concat([new_row, df_vs], ignore_index=True).sort_values('d').reset_index(drop=True)
+
+            df_vs['d'] = df_vs['d'].astype(float)
+
+            matched = pd.merge_asof(
+                df_qc[['Depth']].sort_values('Depth'),
+                df_vs,
+                left_on='Depth',
+                right_on='d',
+                direction='backward'
+            )
+            matched = matched.set_index(df_qc.index)
+            df_qc['Measure Vs'] = matched['vs']
+        else:
+            df_qc['Measure Vs'] = None
+
+        # Save individual result
+        out_path = os.path.join(indiv_folder, f"{code}_merged.csv")
+        df_qc.to_csv(out_path, index=False)
+
+        # Add File Name column for combined output
+        df_qc.insert(0, "File Name", fname)
+        final_df = pd.concat([final_df, df_qc], ignore_index=True)
+
+    output_path = os.path.join(output_folder, 'Mode3_combined_results.csv')
+    final_df.to_csv(output_path, index=False, encoding='utf-8-sig')
+    print(f"All files have been merged and saved to: {output_path}")
+
+# -------------------------------------------------------------
 # Main Execution Block
 # -------------------------------------------------------------
 def run_mode2_workflow(Estimated_Vs_cpt_folder, Vs_folder, output_folder):
@@ -616,5 +617,6 @@ if __name__ == "__main__":
     else:
         print("Invalid mode. Please select 1, 2, or 3.")
         sys.exit(1)
+
 
 
