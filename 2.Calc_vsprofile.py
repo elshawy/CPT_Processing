@@ -56,12 +56,16 @@ for i, model in enumerate(model_keys):
 # Prompt user to select one or more correlation models.
 selected_models_str = input("Enter the model number(s) to use, separated by commas (e.g., 1,3,4): ").strip()
 
-try:
-    selected_model_indices = [int(i.strip()) - 1 for i in selected_models_str.split(',')]
-    selected_model_names = [model_keys[i] for i in selected_model_indices if 0 <= i < len(model_keys)]
-except (ValueError, IndexError):
-    print("Error: Invalid model number(s) provided. Exiting script.")
-    sys.exit(1)
+if selected_models_str == '8':
+    selected_model_names = model_keys
+    print("All available models have been selected.")
+else:
+    try:
+        selected_model_indices = [int(i.strip()) - 1 for i in selected_models_str.split(',')]
+        selected_model_names = [model_keys[i] for i in selected_model_indices if 0 <= i < len(model_keys)]
+    except (ValueError, IndexError):
+        print("Error: Invalid model number(s) provided. Exiting script.")
+        sys.exit(1)
 
 if not selected_model_names:
     print("Error: No valid models were selected. Exiting script.")
@@ -154,4 +158,3 @@ print("\n-------------------------------------------------------------")
 print(" All Vs profiles have been successfully generated. ")
 print("-------------------------------------------------------------")
 print(f"The result files are saved in the '{out_dir}' folder.")
-print("Thank you!")
