@@ -70,13 +70,13 @@ def calculate_vs_intervals(depths):
     return intervals
 
 # -------------------------------------------------------------
-# c Mean Calculation: Estimated vs. Measured Vs
+# Geometric Mean Calculation: Estimated vs. Measured Vs
 # Measured Vs selected based on the middle of the interval (depth_mid)
 # -------------------------------------------------------------
-def compute_c_means(vs_intervals, measured_vs, estimated_vs):
+def compute_geometric_means(vs_intervals, measured_vs, estimated_vs):
     """
-    Computes the c mean for both estimated and measured Vs values
-    within specified depth intervals.
+    Computes the geometric mean for estimated Vs values
+    within depth intervals from measured Vs profile.
     
     Args:
         vs_intervals (list of tuples): Depth intervals (start, end).
@@ -84,7 +84,7 @@ def compute_c_means(vs_intervals, measured_vs, estimated_vs):
         estimated_vs (pd.DataFrame): DataFrame with estimated Vs profiles.
         
     Returns:
-        pd.DataFrame: A DataFrame containing the c mean results
+        pd.DataFrame: A DataFrame containing the geometric mean results
                       for each interval.
     """
     results = []
@@ -617,6 +617,7 @@ if __name__ == "__main__":
     else:
         print("Invalid mode. Please select 1, 2, or 3.")
         sys.exit(1)
+
 
 
 
