@@ -4,9 +4,7 @@
 Integrated CPT-Vs Data Processing and Layer Analysis Script
 -------------------------------------------------------------
 Purpose:
-  This script merges CPT and Vs data files and automatically performs
-  Vs layer analysis on the merged data.
-  (Revised: Now saves individual merged CSV results when running Mode 2)
+  This script merges CPT and Vs data files.
 =============================================================
 """
 import pandas as pd
@@ -623,6 +621,7 @@ if __name__ == "__main__":
     else:
         print("Invalid mode. Please select 1, 2, or 3.")
         sys.exit(1)
+
 
 
 
