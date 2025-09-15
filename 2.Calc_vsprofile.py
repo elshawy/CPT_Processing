@@ -54,7 +54,7 @@ for i, model in enumerate(model_keys):
     print(f"  {i+1}. {model}")
 
 # Prompt user to select one or more correlation models.
-selected_models_str = input("Enter the model number(s) to use, separated by commas (e.g., 1,3,4): ").strip()
+selected_models_str = input("Enter the model number(s) to use, separated by commas (e.g., 1,3,4). Enter 8 to select all models: ").strip()
 
 if selected_models_str == '8':
     selected_model_names = model_keys
