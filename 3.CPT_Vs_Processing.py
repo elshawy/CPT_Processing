@@ -168,7 +168,7 @@ def process_geometric_mean(Vs_folder, Estimated_Vs_cpt_folder, output_folder, co
             result_df = result_df.dropna(thresh=result_df.shape[1] - 3)
 
             # Save individual result
-            result_df.to_csv(os.path.join(indiv_folder, f"{key}_geometric_mean.csv"), index=False)
+            result_df.to_csv(os.path.join(indiv_folder, f"Processed_{key}_geometric_mean.csv"), index=False)
 
             # Add File Name column for combined output
             result_df.insert(0, "File Name", os.path.basename(vs_files[key]))
@@ -551,7 +551,7 @@ def run_mode2_workflow(Estimated_Vs_cpt_folder, Vs_folder, output_folder):
             merged_df = merged_df[reordered_cols]
             
             # Save individual merged result CSV to a separate folder
-            individual_merged_path = os.path.join(merged_results_folder, f"{unique_code}_merged_layers.csv")
+            individual_merged_path = os.path.join(merged_results_folder, f"Processed_{unique_code}_merged_layers.csv")
             merged_df.to_csv(individual_merged_path, index=False, encoding='utf-8-sig')
             print(f"Individual merged result saved: '{os.path.basename(individual_merged_path)}'")
             
@@ -617,6 +617,7 @@ if __name__ == "__main__":
     else:
         print("Invalid mode. Please select 1, 2, or 3.")
         sys.exit(1)
+
 
 
 
