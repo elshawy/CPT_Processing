@@ -9,9 +9,6 @@ from scipy.signal import savgol_filter
 from datetime import datetime 
 
 # ==================================
-# Project: CPT Data Cross-Correlation
-# Author: JHKim
-# Version: 1.0
 # Description: This script processes CPT (Cone Penetration Test) raw data
 #              to perform cross-correlation analysis between qc (cone resistance)
 #              and fs (sleeve friction) signals. It identifies and corrects
