@@ -164,7 +164,13 @@ def process_geometric_mean(Vs_folder, Estimated_Vs_cpt_folder, output_folder, co
             measured_vs = list(zip(vs_df['d'], vs_df['vs']))
             depths = vs_df['d'].values
             vs_intervals = calculate_vs_intervals(depths)
+            vs_cols = [c for c in cpt_df.columns if c != 'Depth']
             result_df = compute_geometric_means(vs_intervals, measured_vs, cpt_df)
+            new_columns = result_df.columns.tolist()
+            for i, col in enumerate(new_columns):
+                if col in vs_cols:
+                    new_columns[i] = f'{col} (Geometric Mean)'
+            result_df.columns = new_columns
             result_df = result_df.dropna(thresh=result_df.shape[1] - 3)
 
             # Save individual result
@@ -617,6 +623,7 @@ if __name__ == "__main__":
     else:
         print("Invalid mode. Please select 1, 2, or 3.")
         sys.exit(1)
+
 
 
 
