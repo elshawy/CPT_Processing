@@ -11,7 +11,7 @@ from datetime import datetime
 # ==================================
 # Project: CPT Data Cross-Correlation
 # Author: JHKim
-# Version: 1.0
+# Version: 1.1 (with filter option)
 # Description: This script processes CPT (Cone Penetration Test) raw data
 #              to perform cross-correlation analysis between qc (cone resistance)
 #              and fs (sleeve friction) signals. It identifies and corrects
@@ -36,6 +36,23 @@ output_folder = os.path.join(os.getcwd(), output_folder_name)
 
 print(f"Input folder: {folder_path}")
 print(f"Output folder: {output_folder}")
+
+# --------------------
+# Filtering options
+# --------------------
+apply_filter = input("Apply Savitzky-Golay filter? (Y/N): ").strip().upper()
+if apply_filter == "Y":
+    try:
+        smoothing_window = int(input("Enter smoothing window size (odd number, >=3): ").strip())
+        if smoothing_window < 3:
+            smoothing_window = 3
+        if smoothing_window % 2 == 0:
+            smoothing_window += 1
+    except ValueError:
+        print("Invalid input. Using default window = 5.")
+        smoothing_window = 5
+else:
+    smoothing_window = None
 
 # --------------------
 # Paths & folders
@@ -69,21 +86,13 @@ if not csv_files:
 # --------------------
 # Helper functions
 # --------------------
-
 def find_case_insensitive_column(df, column_names):
-    """
-    Finds a column in a DataFrame using a list of case-insensitive names.
-    """
     for name in column_names:
         if name in df.columns:
             return name
     return None
 
 def pearson_r_safe(x, y):
-    """
-    Calculates the Pearson correlation coefficient between two 1D arrays,
-    handling cases with insufficient data or zero variance.
-    """
     n = x.size
     if n < 5:
         return np.nan
@@ -96,9 +105,6 @@ def pearson_r_safe(x, y):
     return np.dot(x_d, y_d) / np.sqrt(x_var * y_var)
 
 def step_shift_symmetric(depth, n):
-    """
-    Calculates the most common shift distance for a given number of steps (n).
-    """
     if n == 0:
         return 0.0
     m = abs(n)
@@ -112,15 +118,18 @@ def step_shift_symmetric(depth, n):
     mode_value = unique_diffs[mode_idx]
     return np.sign(n) * mode_value
 
-def run_crosscorr(depth, qc, fs, dz_median, max_steps=20, smoothing_window=5, search_range=0.2):
+def run_crosscorr(depth, qc, fs, dz_median, max_steps=20, smoothing_window=None, search_range=0.2):
     """
     Performs a cross-correlation analysis between qc and fs data.
     """
-    if smoothing_window <= 2: smoothing_window = 3
-    if smoothing_window % 2 == 0: smoothing_window += 1
-        
-    qc_smoothed = savgol_filter(qc, window_length=smoothing_window, polyorder=2)
-    fs_smoothed = savgol_filter(fs, window_length=smoothing_window, polyorder=2)
+    if smoothing_window is not None:
+        if smoothing_window <= 2: smoothing_window = 3
+        if smoothing_window % 2 == 0: smoothing_window += 1
+        qc_smoothed = savgol_filter(qc, window_length=smoothing_window, polyorder=2)
+        fs_smoothed = savgol_filter(fs, window_length=smoothing_window, polyorder=2)
+    else:
+        qc_smoothed = qc.copy()
+        fs_smoothed = fs.copy()
 
     n_values = np.arange(-max_steps, max_steps + 1)
     shifts = np.array([step_shift_symmetric(depth, n) for n in n_values])
@@ -179,11 +188,7 @@ def run_crosscorr(depth, qc, fs, dz_median, max_steps=20, smoothing_window=5, se
         "n_values": n_values
     }
 
-
 def fs_from_original(fs_data, total_qc_shift, dz_median):
-    """
-    Shifts the fs data array based on a total qc shift distance.
-    """
     nstep = int(round(-total_qc_shift / dz_median))
     fs_corr = np.full_like(fs_data, np.nan)
     if nstep > 0:
@@ -195,9 +200,6 @@ def fs_from_original(fs_data, total_qc_shift, dz_median):
     return fs_corr, nstep * dz_median
 
 def save_corr_plot(depth, qc, fs, ccf_result, fig_path, title):
-    """
-    Generates and saves a plot of the cross-correlation coefficient vs. shift distance.
-    """
     fig, ax = plt.subplots(figsize=(5.8, 4.2))
     ax.plot(ccf_result["shifts"], ccf_result["correlations"], color='blue', linewidth=1.5, alpha=0.7)
     ax.axvline(ccf_result["best_shift"], color='k', linestyle='--', linewidth=1, alpha=0.7)
@@ -295,7 +297,7 @@ for file in tqdm(csv_files, desc="Processing files"):
 
     dz_median = np.median(np.diff(depth0)) if depth0.size > 1 else np.nan
 
-    initial_best = run_crosscorr(depth0, qc0, fs0, dz_median, max_steps=50)
+    initial_best = run_crosscorr(depth0, qc0, fs0, dz_median, max_steps=50, smoothing_window=smoothing_window)
     if initial_best is None:
         print(f"Skipping {os.path.basename(file)}: Cross-correlation analysis failed.")
         continue
@@ -325,7 +327,7 @@ for file in tqdm(csv_files, desc="Processing files"):
     if initial_best["best_shift"] > 0:
         for i in range(100):
             total_iterations = i + 1
-            ccf_result = run_crosscorr(depth0, qc0, current_fs, dz_median, max_steps=20)
+            ccf_result = run_crosscorr(depth0, qc0, current_fs, dz_median, max_steps=20, smoothing_window=smoothing_window)
             
             if ccf_result is None or ccf_result["best_n_samples"] < 5:
                 note_post = f"Correction failed after {i} iterations"
