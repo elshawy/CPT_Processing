@@ -10,5 +10,5 @@ setup(
     packages=["vs_calc", "vs_api"],
     url="https://github.com/ucgmsim/Vs30",
     description="Vs30 Web Calculator",
-    install_requires=["numpy", "pandas", "pyyaml", "flask", "flask_cors", "uwsgi"],
+    install_requires=["numpy", "pandas", "pyyaml", "flask", "flask_cors", "uwsgi", "matplotlib", " scikit_learn", "ruptures"],
 )
