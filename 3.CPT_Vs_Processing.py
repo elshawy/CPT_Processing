@@ -310,23 +310,50 @@ def merge_all_profiles(Estimated_Vs_cpt_folder, Vs_folder, output_folder):
     final_df = pd.DataFrame()
     cpt_files = glob.glob(os.path.join(Estimated_Vs_cpt_folder, '*.csv'))
     vs_dict = {extract_key(os.path.basename(f)): f for f in glob.glob(os.path.join(Vs_folder, '*.csv'))}
+
     for qc_file in cpt_files:
         fname = os.path.basename(qc_file)
         code = extract_key(fname)
         df_qc = pd.read_csv(qc_file)
+
+        qc_cols = [col for col in df_qc.columns if col.lower() == "qc"]
+        if qc_cols:
+            df_qc["qc"] = df_qc[qc_cols].bfill(axis=1).iloc[:, 0]
+
+        fs_cols = [col for col in df_qc.columns if col.lower().startswith("fs")]
+        if fs_cols:
+            df_qc["fs"] = df_qc[fs_cols].bfill(axis=1).iloc[:, 0]
+
         if code in vs_dict:
             df_vs = pd.read_csv(vs_dict[code]).sort_values('d').reset_index(drop=True)
             assign_vs = get_vs_step_assigner(df_vs)
             df_qc['Measure Vs'] = df_qc['Depth'].apply(assign_vs)
         else:
             df_qc['Measure Vs'] = None
+
+        cols = list(df_qc.columns)
+
+        cols = [c for c in cols if c not in ("qc", "fs")]
+
+        if "Depth" in cols:
+            depth_idx = cols.index("Depth")
+            new_cols = cols[:depth_idx+1] + ["qc", "fs"] + cols[depth_idx+1:]
+        else:
+            new_cols = cols[:2] + ["qc", "fs"] + cols[2:]
+
+        df_qc = df_qc[new_cols]
+
         out_path = os.path.join(indiv_folder, f"{code}_merged.csv")
         df_qc.to_csv(out_path, index=False)
+
         df_qc.insert(0, "File Name", fname)
         final_df = pd.concat([final_df, df_qc], ignore_index=True)
+
     output_path = os.path.join(output_folder, 'Mode3_combined_results.csv')
     final_df.to_csv(output_path, index=False, encoding='utf-8-sig')
     print(f"All files have been merged and saved to: {output_path}")
+
+
 
 # -------------------------------------------------------------
 # Mode 2: Layer Analysis + Step Profile Matching
