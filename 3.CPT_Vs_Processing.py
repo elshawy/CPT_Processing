@@ -54,23 +54,36 @@ def extract_key(filename):
 # Step Profile Utility: Get Vs assigner function for any depth
 # -------------------------------------------------------------
 def get_vs_step_assigner(df_vs):
-    """
-    Returns a function to assign Vs to any depth, matching geotechnical step-profile convention:
-    Each Vs is applied from the previous d up to (but not including) its own d.
-    """
+
     df_vs = df_vs.sort_values('d').reset_index(drop=True)
+    
+    # 1. Start depth at 0 if the first Vs depth > 0
     if df_vs.iloc[0]['d'] > 0:
         first_vs = df_vs.iloc[0]['vs']
         new_row = pd.DataFrame([{'d': 0, 'vs': first_vs}])
         df_vs = pd.concat([new_row, df_vs], ignore_index=True).sort_values('d').reset_index(drop=True)
+    
+    # Define the interval boundaries
     df_vs['d_lower'] = df_vs['d'].shift(1)
     df_vs['d_upper'] = df_vs['d']
-    df_vs = df_vs.astype({'d_lower': float, 'd_upper': float})  # Ensure float type
+    
+    df_vs = df_vs.astype({'d_lower': float, 'd_upper': float})
     df_vs.loc[0, 'd_lower'] = 0
-    df_vs.loc[df_vs.index[-1], 'd_upper'] = np.inf
+    
+    # Set the upper bound of the last interval (D_max) to be inclusive (e.g., extend slightly past D_max)
+    # The maximum depth of the CPT is already filtered to D_max, so setting it to D_max + delta is sufficient.
+    last_idx = df_vs.index[-1]
+    last_d = df_vs.loc[last_idx, 'd']
+    
+    # Use a small delta based on typical CPT resolution (e.g., 0.01m) to make the interval inclusive [D_prev, D_max + delta)
+    # This ensures CPT Depth = D_max is included in the last valid interval.
+    df_vs.loc[last_idx, 'd_upper'] = last_d + 1 
+    
     def assign_vs(depth):
+        # The logic remains d_lower <= depth < d_upper
         row = df_vs[(df_vs['d_lower'] <= depth) & (depth < df_vs['d_upper'])]
         return row['vs'].iloc[0] if not row.empty else None
+    
     return assign_vs
 
 # -------------------------------------------------------------
@@ -304,6 +317,8 @@ def analyze_cpt_for_layers(file_path, output_csv_folder, output_plot_folder, min
 # -------------------------------------------------------------
 # Mode 3: Merge All Measured Vs into CPT Profiles (Step Profile)
 # -------------------------------------------------------------
+
+
 def merge_all_profiles(Estimated_Vs_cpt_folder, Vs_folder, output_folder):
     indiv_folder = os.path.join(output_folder, "individual")
     os.makedirs(indiv_folder, exist_ok=True)
@@ -324,8 +339,57 @@ def merge_all_profiles(Estimated_Vs_cpt_folder, Vs_folder, output_folder):
         if fs_cols:
             df_qc["fs"] = df_qc[fs_cols].bfill(axis=1).iloc[:, 0]
 
+        # =============================================================
+        # Keep only data where qc and fs are positive
+        # =============================================================
+        initial_rows = len(df_qc)
+        if 'Depth' in df_qc.columns:
+            df_qc['Depth'] = df_qc['Depth'].round(3)
+            df_qc = df_qc[df_qc['Depth'] > 0].copy()
+            if len(df_qc) < initial_rows:
+                print(f"Info: {initial_rows - len(df_qc)} rows with Depth = 0 were removed from {fname}.")
+        initial_rows = len(df_qc) # Reset initial_rows count after Depth filter
+
+        if "qc" in df_qc.columns and "fs" in df_qc.columns:
+            df_qc = df_qc[(df_qc['qc'] > 0) & (df_qc['fs'] > 0)].copy()
+            if len(df_qc) < initial_rows:
+                 print(f"Warning: {initial_rows - len(df_qc)} rows with non-positive qc or fs were removed from {fname}.")
+        else:
+            # If 'qc' or 'fs' were not found, filter based on 'qc' only 
+            # (assuming fs is not used for primary filtering if not found)
+            if "qc" in df_qc.columns:
+                df_qc = df_qc[df_qc['qc'] > 0].copy()
+                if len(df_qc) < initial_rows:
+                    print(f"Warning: {initial_rows - len(df_qc)} rows with non-positive qc were removed from {fname}.")
+
+        # Check if the DataFrame is empty after filtering
+        if df_qc.empty:
+            print(f"Warning: After initial filtering, {fname} is empty. Skipping file.")
+            continue
+        # =============================================================
+
         if code in vs_dict:
             df_vs = pd.read_csv(vs_dict[code]).sort_values('d').reset_index(drop=True)
+            
+            # =============================================================
+            # DEPTH LIMITATION LOGIC: Limit CPT data to max Vs depth
+            # =============================================================
+            # Find the maximum depth of the measured Vs data
+            max_vs_depth = df_vs['d'].max()
+            
+            # Limit the CPT data to depths less than or equal to the maximum Vs depth
+            initial_qc_rows = len(df_qc)
+            df_qc = df_qc[df_qc['Depth'] <= max_vs_depth].copy()
+            
+            if len(df_qc) < initial_qc_rows:
+                print(f"Info: {initial_qc_rows - len(df_qc)} CPT rows exceeding max Vs depth ({max_vs_depth:.2f}m) were removed from {fname}.")
+
+            # Check if the DataFrame is empty after Vs depth filtering
+            if df_qc.empty:
+                print(f"Warning: After Vs depth filtering, {fname} is empty. Skipping Vs merge.")
+                continue
+            # =============================================================
+
             assign_vs = get_vs_step_assigner(df_vs)
             df_qc['Measure Vs'] = df_qc['Depth'].apply(assign_vs)
         else:
@@ -333,17 +397,21 @@ def merge_all_profiles(Estimated_Vs_cpt_folder, Vs_folder, output_folder):
 
         cols = list(df_qc.columns)
 
+        # Exclude the original 'qc' and 'fs' column names to prevent duplicates 
+        # (since we are inserting the processed 'qc' and 'fs' later)
         cols = [c for c in cols if c not in ("qc", "fs")]
 
         if "Depth" in cols:
             depth_idx = cols.index("Depth")
             new_cols = cols[:depth_idx+1] + ["qc", "fs"] + cols[depth_idx+1:]
         else:
-            new_cols = cols[:2] + ["qc", "fs"] + cols[2:]
+            # If 'Depth' is missing, insert them after the first two columns
+            new_cols = cols[:2] + ["qc", "fs"] + cols[2:] 
 
+        # Apply the final column order to the filtered DataFrame
         df_qc = df_qc[new_cols]
 
-        out_path = os.path.join(indiv_folder, f"{code}_merged.csv")
+        out_path = os.path.join(indiv_folder, f"processed_{code}_merged.csv")
         df_qc.to_csv(out_path, index=False)
 
         df_qc.insert(0, "File Name", fname)
@@ -352,9 +420,6 @@ def merge_all_profiles(Estimated_Vs_cpt_folder, Vs_folder, output_folder):
     output_path = os.path.join(output_folder, 'Mode3_combined_results.csv')
     final_df.to_csv(output_path, index=False, encoding='utf-8-sig')
     print(f"All files have been merged and saved to: {output_path}")
-
-
-
 # -------------------------------------------------------------
 # Mode 2: Layer Analysis + Step Profile Matching
 # -------------------------------------------------------------
@@ -384,7 +449,7 @@ def run_mode2_workflow(Estimated_Vs_cpt_folder, Vs_folder, output_folder):
     if not cpt_files:
         print("Warning: No CPT files found to analyze. Exiting program.")
         sys.exit(0)
-    min_thickness_m = 1
+    min_thickness_m = 0.5
     for cpt_file in cpt_files:
         print(f"Processing file: {os.path.basename(cpt_file)}")
         analyze_cpt_for_layers(cpt_file, analysis_csv_folder, analysis_plot_folder, min_thickness_m)
