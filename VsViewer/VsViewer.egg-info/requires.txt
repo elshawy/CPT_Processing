@@ -4,3 +4,6 @@ pyyaml
 flask
 flask_cors
 uwsgi
+matplotlib
+scikit_learn
+ruptures

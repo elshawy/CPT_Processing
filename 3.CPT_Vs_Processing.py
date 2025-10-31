@@ -80,50 +80,73 @@ def extract_key(filename):
 # Step Profile Utility: Get Vs assigner function for any depth
 # (Modified to assign Vs_at_di to the interval [d_{i-1}, d_i))
 # -------------------------------------------------------------
-def get_vs_step_assigner(df_vs):
+#def get_vs_step_assigner(df_vs):
+#
+#    df_vs = df_vs.sort_values('d').reset_index(drop=True)
+#    
+#    if not df_vs.empty and df_vs.iloc[0]['d'] > 0:
+#        first_vs = df_vs.iloc[0]['vs']
+#        new_row = pd.DataFrame([{'d': 0, 'vs': first_vs}])
+#        df_vs = pd.concat([new_row, df_vs], ignore_index=True).sort_values('d').reset_index(drop=True)
+#    
+#    
+#    df_vs['d_upper'] = df_vs['d']
+#    
+#    df_vs['d_lower'] = df_vs['d'].shift(1)
+#    
+#    df_vs = df_vs.astype({'d_lower': float, 'd_upper': float})
+#    
+#    df_vs.loc[0, 'd_lower'] = 0.0
+#    
+#    last_idx = df_vs.index[-1]
+#    
+#    last_d = df_vs.loc[last_idx, 'd']
+#
+#    df_vs.loc[last_idx, 'd_upper'] = last_d + 1e-4 
+#    # -------------------------------------------------------------
+#    
+#    
+#    def assign_vs(depth):
+#        row = df_vs[(df_vs['d_lower'] <= depth) & (depth < df_vs['d_upper'])]
+#        return row['vs'].iloc[0] if not row.empty else None
+#    
+#    return assign_vs
+def get_vs_step_assigner(df_vs: pd.DataFrame):
+    if df_vs.empty or 'd' not in df_vs.columns or 'vs' not in df_vs.columns:
+        return lambda depth: np.nan
 
     df_vs = df_vs.sort_values('d').reset_index(drop=True)
-    
-    # 1. Start depth at 0 if the first Vs depth > 0
-    if not df_vs.empty and df_vs.iloc[0]['d'] > 0:
+
+    if df_vs.iloc[0]['d'] > 0:
         first_vs = df_vs.iloc[0]['vs']
-        new_row = pd.DataFrame([{'d': 0, 'vs': first_vs}])
+        if len(df_vs) > 1:
+            depth_diffs = np.diff(df_vs['d'].values)
+            median_diff = np.median(depth_diffs)
+        else:
+            median_diff = df_vs.iloc[0]['d']
+        new_depth = max(df_vs.iloc[0]['d'] - median_diff, 0.0)
+        new_row = pd.DataFrame([{'d': new_depth, 'vs': first_vs}])
         df_vs = pd.concat([new_row, df_vs], ignore_index=True).sort_values('d').reset_index(drop=True)
-    
-    # Define the interval boundaries based on [d_{i-1}, d_i) rule
-    
-    # d_upper: 현재 행의 깊이 d_i가 할당 구간의 상한이 됩니다.
+
     df_vs['d_upper'] = df_vs['d']
-    
-    # d_lower: 이전 행의 깊이 d_{i-1}이 할당 구간의 하한이 됩니다.
     df_vs['d_lower'] = df_vs['d'].shift(1)
-    
     df_vs = df_vs.astype({'d_lower': float, 'd_upper': float})
-    
-    # Index 0 처리: [0.0, d_first]
-    df_vs.loc[0, 'd_lower'] = 0.0
-    
-    # --- CRITICAL FIX: 마지막 d_max 지점을 포함하도록 d_upper 확장 ---
+
+    df_vs.loc[0, 'd_lower'] = df_vs.iloc[0]['d']
+
     last_idx = df_vs.index[-1]
-    
-    # 마지막 Vs 측정 깊이 d_max
     last_d = df_vs.loc[last_idx, 'd']
+    df_vs.loc[last_idx, 'd_upper'] = last_d + 1e-4
 
-    # d_upper 경계 조건 < d_upper 때문에, d_max 값을 할당하기 위해
-    # d_upper를 d_max + 1e-4 (부동 소수점 오차보다 큰 작은 값)로 확장합니다.
-    # 이렇게 하면 d_lower <= depth < d_upper 조건에 d_max가 포함됩니다.
-    df_vs.loc[last_idx, 'd_upper'] = last_d + 1e-4 
-    # -------------------------------------------------------------
-    
-    
+    d_lower_arr = df_vs['d_lower'].values
+    d_upper_arr = df_vs['d_upper'].values
+    vs_arr = df_vs['vs'].values
+
     def assign_vs(depth):
-        # 최종 할당 로직: d_lower <= depth < d_upper
-        # d_max는 d_upper가 d_max + 1e-4로 설정되어 있으므로 포함됩니다.
-        row = df_vs[(df_vs['d_lower'] <= depth) & (depth < df_vs['d_upper'])]
-        return row['vs'].iloc[0] if not row.empty else None
-    
-    return assign_vs
+        match = (d_lower_arr <= depth) & (depth < d_upper_arr)
+        return vs_arr[match][0] if np.any(match) else None
 
+    return assign_vs
 # -------------------------------------------------------------
 # Mode 1: Geometric Mean Calculation with Step Profile Matching
 # -------------------------------------------------------------

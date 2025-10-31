@@ -9,6 +9,9 @@ Requires-Dist: pyyaml
 Requires-Dist: flask
 Requires-Dist: flask_cors
 Requires-Dist: uwsgi
+Requires-Dist: matplotlib
+Requires-Dist: scikit_learn
+Requires-Dist: ruptures
 Dynamic: home-page
 Dynamic: requires-dist
 Dynamic: summary
