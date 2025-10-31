@@ -1,0 +1,136 @@
+TYPE,CODE,CODE_CPT,gwl,extracted_from_Report,a,extracted_from_Report_1,pre-drill_CPT,startdepth_CPT,resolution_CPT,Need_correction,Latitude,Longitude,ycoord_1,xcoord_1,Subset_Region,Subset_Geology,MAPSYMBOL,MAPNAME
+SCPT,14526,x,12.53,o,0.8,x,0,0.02,0.02,x,-43.56483868,172.6552655,5176400,1572160,2,3,mQ.loszlt,Middle Pleistocene loess deposits
+SCPT,14538,x,3.85,o,0.8,x,0,0.02,0.02,x,-43.57517125,172.6427437,5175248.2,1571153.7,2,1,Q1.fangvl,OIS1 (Holocene) fan deposits
+SCPT,14539,x,8.49,o,0.8,x,0,0.02,0.02,x,-43.57544842,172.6426925,5175217.4,1571149.7,2,3,mQ.loszlt,Middle Pleistocene loess deposits
+SCPT,14540,x,3.7,o,0.8,x,0,0.02,0.02,x,-43.57151323,172.7114139,5175676,1576697,2,3,mQ.loszlt,Middle Pleistocene loess deposits
+SCPT,14541,x,8.95,o,0.8,x,0,0.02,0.02,x,-43.57146964,172.7116271,5175680.9,1576714.2,2,3,mQ.loszlt,Middle Pleistocene loess deposits
+SCPT,14543,x,1,x,0.8,x,0.5,0.5,0.02,x,-43.56112659,172.6690925,5176816.8,1573275,2,3,mQ.loszlt,Middle Pleistocene loess deposits
+SCPT,14548,x,10.9,o,0.8,x,0,0.02,0.02,x,-43.57030407,172.683223,5175802,1574420.1,2,3,mQ.loszlt,Middle Pleistocene loess deposits
+SCPT,14550,x,18.32,o,0.8,x,0.3,0.3,0.02,x,-43.57034426,172.6827806,5175797.4,1574384.4,2,3,mQ.loszlt,Middle Pleistocene loess deposits
+SCPT,14552,x,1.52,o,0.8,x,0,0.02,0.02,x,-43.56605203,172.6620617,5176267.5,1572709.4,2,3,mQ.loszlt,Middle Pleistocene loess deposits
+SCPT,14556,x,1.61,o,0.8,x,0,0.02,0.02,x,-43.56522604,172.6622645,5176359.3,1572725.4,2,3,mQ.loszlt,Middle Pleistocene loess deposits
+SCPT,14651,x,1.33,o,0.8,x,0,0.02,0.02,x,-43.56475088,172.6560089,5176410,1572220,2,3,mQ.loszlt,Middle Pleistocene loess deposits
+SCPT,36413,x,1.8,o,0.81,o,0.2,0,0.01,x,-43.50112416,172.6860185,5183485.17,1574616.63,2,1,Q1.alvgvl,OIS1 (Holocene) river deposits
+SCPT,57279,x,0.2,o,0.58,o,0,0,0.02,x,-43.51835204,172.6347834,5181555,1570483,2,1,Q1.swp,OIS1 (Holocene) swamp deposits
+SCPT,57280,x,1,x,0.58,o,0,0,0.02,x,-43.51880899,172.6340754,5181504,1570426,2,1,Q1.swp,OIS1 (Holocene) swamp deposits
+SCPT,57339,x,1.2,o,0.58,o,0,0,0.02,x,-43.49207629,172.6192522,5184467.51,1569214.43,2,1,Q1.swp,OIS1 (Holocene) swamp deposits
+SCPT,57341,x,1,x,0.58,o,0,0,0.02,x,-43.5488182,172.6953762,5178191.17,1575392.5,2,1,Q1.est,OIS1 (Holocene) estuary deposits
+SCPT,57342,x,1,x,0.58,o,0,0,0.02,x,-43.505482,172.690785,5183002.66,1575003.74,2,1,Q1.alvgvl,OIS1 (Holocene) river deposits
+SCPT,57343,x,2.2,o,0.58,o,0,0,0.02,x,-43.50669469,172.7213946,5182876.72,1577478.59,2,1,Q1.dns,OIS1 (Holocene) stable dune deposits
+SCPT,57345,x,1.2,o,0.58,o,0,0,0.02,x,-43.52987469,172.5921636,5180259.3,1567044.75,2,1,Q1.alvgvl,OIS1 (Holocene) river deposits
+SCPT,57346,x,1.2,o,0.58,o,0,0,0.02,x,-43.50432885,172.6606394,5183121.23,1572566.33,2,1,Q1.alvgvl,OIS1 (Holocene) river deposits
+SCPT,57347,x,1,x,0.58,o,0,0,0.02,x,-43.51079149,172.7099546,5182418.58,1576555.41,2,1,Q1.est,OIS1 (Holocene) estuary deposits
+SCPT,57348,x,1,x,0.58,o,0,0,0.02,x,-43.51158915,172.7114306,5182330.41,1576675.02,2,1,Q1.est,OIS1 (Holocene) estuary deposits
+SCPT,57349,x,2,o,0.58,o,0,0,0.02,x,-43.50927048,172.7064843,5182586.51,1576274.31,2,1,Q1.dns,OIS1 (Holocene) stable dune deposits
+SCPT,57350,x,2.2,o,0.58,o,0,0,0.02,x,-43.4952059,172.7181249,5184151.75,1577209.96,2,1,Q1.dns,OIS1 (Holocene) stable dune deposits
+SCPT,57351,x,1.1,o,0.58,o,0,0,0.02,x,-43.49449902,172.60157,5184191.75,1567786.02,2,1,Q1.alvgvl,OIS1 (Holocene) river deposits
+SCPT,57353,x,1,x,0.58,o,0,0,0.02,x,-43.55675905,172.6521929,5177295.58,1571907.87,2,1,Q1.alvgvl,OIS1 (Holocene) river deposits
+SCPT,57354,x,1,x,0.58,o,0,0,0.02,x,-43.508116,172.6871821,5182709.05,1574713.59,2,1,Q1.alvgvl,OIS1 (Holocene) river deposits
+SCPT,57355,x,1,x,0.58,o,0,0,0.02,x,-43.54724542,172.6374966,5178347.09,1570716.27,2,1,Q1.alvgvl,OIS1 (Holocene) river deposits
+SCPT,57356,x,1.1,o,0.58,o,0,0,0.02,x,-43.54319121,172.6576182,5178804.23,1572339.87,2,1,Q1.alvgvl,OIS1 (Holocene) river deposits
+SCPT,57357,x,1,x,0.58,o,0,0,0.02,x,-43.54463687,172.659457,5178644.29,1572489.07,2,1,Q1.alvgvl,OIS1 (Holocene) river deposits
+SCPT,57358,x,1.6,o,0.58,o,0,0,0.02,x,-43.50717077,172.6291304,5182794.75,1570020.6,2,1,Q1.alvgvl,OIS1 (Holocene) river deposits
+SCPT,57359,x,0.6,o,0.58,o,0,0,0.02,x,-43.51056742,172.6148801,5182412.29,1568870.42,2,1,Q1.alvgvl,OIS1 (Holocene) river deposits
+SCPT,57360,x,1,x,0.58,o,0,0,0.02,x,-43.55132026,172.688229,5177911.16,1574816.2,2,1,Q1.alvgvl,OIS1 (Holocene) river deposits
+SCPT,57362,x,1.1,o,0.58,o,0,0,0.02,x,-43.512986,172.6461397,5182154.9,1571398.29,2,1,Q1.alvgvl,OIS1 (Holocene) river deposits
+SCPT,57363,x,3,o,0.58,o,0,0,0.02,x,-43.50611714,172.6157121,5182906.84,1568935.39,2,1,Q1.alvgvl,OIS1 (Holocene) river deposits
+SCPT,57364,x,1,x,0.58,o,0,0,0.02,x,-43.55617804,172.5932786,5177338.52,1567149.13,2,1,Q1.alvgvl,OIS1 (Holocene) river deposits
+SCPT,57365,x,0.8,o,0.58,o,0,0,0.02,x,-43.56062968,172.6731269,5176872.57,1573600.38,2,1,Q1.alvgvl,OIS1 (Holocene) river deposits
+SCPT,57366,x,2.2,o,0.58,o,0,0,0.02,x,-43.51040145,172.6619984,5182447.27,1572678.94,2,1,Q1.alvgvl,OIS1 (Holocene) river deposits
+SCPT,61758,x,1.8,o,0.58,o,0,0,0.02,x,-43.50433491,172.690707,5183130,1574997,2,1,Q1.alvgvl,OIS1 (Holocene) river deposits
+SCPT,94658,x,3.2,o,0.8,x,1.5,0,0.01,x,-38.135537,176.282584,5774053.3,1887707.73,6,1,Q1.alvgvl,OIS1 (Holocene) river deposits
+SCPT,114319,x,1,x,0.8,x,x,0,0.01,x,-38.37377765,178.3003988,5739392,2063141,4,1,Q1.bch,OIS1 (Holocene) ocean beach deposits
+SCPT,114322,x,1,x,0.8,x,0,0,0.01,x,-38.37333699,178.3015789,5739435,2063247,4,1,Q1.bch,OIS1 (Holocene) ocean beach deposits
+SCPT,124801,x,7,o,0.81,o,0,0,0.01,x,-37.761956,176.105693,5816052.27,1873583.94,6,4,Q8.ign7,"Chimp Formation ignimbrite of Ohakuri, Kapenga and Rotorua Volcanic Centres"
+SCPT,124802,x,9.8,o,0.81,o,0,0,0.01,x,-37.762426,176.106121,5815998.85,1873619.92,6,4,Q8.ign7,"Chimp Formation ignimbrite of Ohakuri, Kapenga and Rotorua Volcanic Centres"
+SCPT,125043,x,2.5,o,0.75,o,3.5,0,0.01,x,-36.84398293,174.7678032,5920976,1757619.6,8,1,Q1.anteng,OIS1 (Holocene) engineered fill
+SCPT,126232,x,4,o,0.81,o,6,0,0.01,x,-37.67250688,176.1623993,5825813.11,1878916.54,6,1,Q1.alvgvl,OIS1 (Holocene) river deposits
+SCPT,128450,x,4,o,0.81,o,6,0,0.01,x,-37.671587,176.161096,5825919.15,1878805.39,6,1,Q1.alvgvl,OIS1 (Holocene) river deposits
+SCPT,136515,x,2,o,0.81,o,0,0,0.01,x,-37.721418,176.318716,5819906.62,1892514.23,6,1,Q1.bch,OIS1 (Holocene) ocean beach deposits
+SCPT,140250,x,3.3,o,0.81,o,1.5,0,0.01,x,-37.80158894,175.3093692,5813686,1803314.9,7,2,Q3Q2.alvpum,OIS3-OIS2 (Late Pleistocene) river deposits (Hinuera Formation)
+SCPT,140251,x,16.5,o,0.81,o,1.5,0,0.01,x,-37.80127614,175.3096502,5813720.1,1803340.5,7,2,Q3Q2.alvpum,OIS3-OIS2 (Late Pleistocene) river deposits (Hinuera Formation)
+SCPT,140253,x,2.65,o,0.81,o,0,0,0.01,x,-37.8019652,175.3067756,5813649.89,1803085.5,7,2,Q3Q2.alvpum,OIS3-OIS2 (Late Pleistocene) river deposits (Hinuera Formation)
+SCPT,140254,x,2.8,o,0.81,o,0,0,0.01,x,-37.80037772,175.3093123,5813820.53,1803313.21,7,2,Q3Q2.alvpum,OIS3-OIS2 (Late Pleistocene) river deposits (Hinuera Formation)
+SCPT,140257,x,0,o,0.81,o,0,0,0.01,x,-37.80242117,175.31021,5813591.82,1803386.65,7,2,Q14+Q12.alvsnd,OIS14+-OIS12 (Early Pleistocene to Middle Pleistocene) river deposits and ignimbrite
+SCPT,140260,x,2.7,o,0.81,o,0,0,0.01,x,-37.80120427,175.3093045,5813728.83,1803310.26,7,2,Q3Q2.alvpum,OIS3-OIS2 (Late Pleistocene) river deposits (Hinuera Formation)
+SCPT,140262,x,2.7,o,0.81,o,0,0,0.01,x,-37.80100653,175.3092248,5813750.95,1803303.78,7,2,Q3Q2.alvpum,OIS3-OIS2 (Late Pleistocene) river deposits (Hinuera Formation)
+SCPT,140263,x,6.5,o,0.81,o,0,0,0.01,x,-37.80138623,175.3101067,5813706.89,1803380.4,7,2,Q3Q2.alvpum,OIS3-OIS2 (Late Pleistocene) river deposits (Hinuera Formation)
+SCPT,148992,x,2,o,0.8,o,0,0,0.01,x,-37.68851362,176.2303521,5823831.39,1884849.7,6,1,Q1.swp,OIS1 (Holocene) swamp deposits
+SCPT,148995,x,1.7,o,0.8,o,0,0,0.01,x,-37.68831586,176.2305795,5823852.64,1884870.51,6,1,Q1.swp,OIS1 (Holocene) swamp deposits
+SCPT,148998,x,2.1,o,0.8,o,0,0,0.01,x,-37.68843212,176.2301483,5823841.05,1884832.04,6,1,Q1.swp,OIS1 (Holocene) swamp deposits
+SCPT,148999,x,1.7,o,0.8,o,0,0,0.01,x,-37.68859547,176.2307373,5823821.13,1884883.36,6,1,Q1.swp,OIS1 (Holocene) swamp deposits
+SCPT,154032,x,2.4,o,0.8,o,0,0.01,0.01,x,-37.66429,176.200125,5826612.05,1882275.9,6,1,Q1.bch,OIS1 (Holocene) ocean beach deposits
+SCPT,154771,x,1,o,0.75,o,0.5,0.5,0.01,x,-41.31496046,174.8183887,5424683.04,1752202.45,3,1,Q1.bch,OIS1 (Holocene) ocean beach deposits
+SCPT,154775,x,0,o,0.75,o,0.6,0.6,0.01,x,-41.3261796,174.8089279,5423454.01,1751384.56,3,1,Q1.bch,OIS1 (Holocene) ocean beach deposits
+SCPT,156296,x,0,o,0.8,o,2,0,0.01,x,-37.77776753,175.3040533,5816341,1802912,7,2,Q3Q2.alvpum,OIS3-OIS2 (Late Pleistocene) river deposits (Hinuera Formation)
+SCPT,156298,x,0,o,0.8,o,2,0,0.01,x,-37.77789573,175.3044093,5816326,1802943,7,2,Q3Q2.alvpum,OIS3-OIS2 (Late Pleistocene) river deposits (Hinuera Formation)
+SCPT,156300,x,0,o,0.8,o,2,0,0.01,x,-37.7784749,175.3047451,5816261,1802971,7,2,Q3Q2.alvpum,OIS3-OIS2 (Late Pleistocene) river deposits (Hinuera Formation)
+SCPT,156301,x,3.5,o,0.8,o,2,0,0.01,x,-37.77876842,175.3044818,5816229,1802947,7,2,Q3Q2.alvpum,OIS3-OIS2 (Late Pleistocene) river deposits (Hinuera Formation)
+SCPT,156307,x,10.25,o,0.8,x,0,0.01,0.01,x,-38.65482717,175.9253986,5717460,1854562,5,4,Q1.ign,Taupo Pumice Formation of Taupo Volcanic Centre
+SCPT,156308,x,10.25,o,0.8,o,0,0.01,0.01,x,-38.65493425,175.9254147,5717452,1854567,5,4,Q1.ign,Taupo Pumice Formation of Taupo Volcanic Centre
+SCPT,156310,x,10.3,o,0.8,o,0,0.01,0.01,x,-38.6548002,175.9254576,5717466,1854571,5,4,Q1.ign,Taupo Pumice Formation of Taupo Volcanic Centre
+SCPT,156311,x,9.8,o,0.8,x,0,0.01,0.01,x,-38.65487519,175.9257406,5717459,1854593,5,4,Q1.ign,Taupo Pumice Formation of Taupo Volcanic Centre
+SCPT,165738,x,0.4,o,0.8,o,0,0,0.01,x,-36.5920887,174.689431,5949048,1751124,8,1,Q1.bch2,OIS1 (Holocene) ocean beach deposits of Karioitahi Group
+SCPT,165739,x,0.1,o,0.8,o,0,0,0.01,x,-36.59360553,174.690526,5948878,1751219,8,1,Q1.bch2,OIS1 (Holocene) ocean beach deposits of Karioitahi Group
+SCPT,182797,x,0.9,o,0.8,o,1,1.01,0.01,x,-43.6105224,172.709824,5171342.8,1576584.23,2,1,Q1.anteng,OIS1 (Holocene) engineered fill
+SCPT,184148,x,1.3,o,0.75,o,0,0.01,0.01,x,-36.85208434,174.6468466,5920269.85,1746818.53,8,1,PlPtH.sed,Pliocene to Holocene undifferentiated Takaanini Formation
+SCPT,192457,x,4,o,0.8,o,1.5,1.51,0.01,x,-37.10498597,174.9519332,5891697.69,1773445.01,8,1,H.alvgvl,OIS1 (Holocene) river deposits of Takaanini Formation
+SCPT,192465,x,2.1,o,0.8,o,0,0.01,0.01,x,-37.10513702,174.9512441,5891682.19,1773383.43,8,1,H.alvgvl,OIS1 (Holocene) river deposits of Takaanini Formation
+SCPT,192469,x,10.6,o,0.8,o,0,0.01,0.01,x,-37.15592,174.8977342,5886144.09,1768515.46,8,4,mQlQ.tuf,Undifferentiated Kerikeri Volcanic Group tephra and tuff of South Auckland Volcanic Field
+SCPT,192473,x,10.26,o,0.8,o,0,0.01,0.01,x,-37.156097,174.8984551,5886123.17,1768579.09,8,4,mQlQ.tuf,Undifferentiated Kerikeri Volcanic Group tephra and tuff of South Auckland Volcanic Field
+SCPT,192478,x,10.6,o,0.8,o,0,0.01,0.01,x,-37.15776595,174.8965112,5885941.45,1768402.75,8,4,mQlQ.tuf,Undifferentiated Kerikeri Volcanic Group tephra and tuff of South Auckland Volcanic Field
+SCPT,192480,x,4.4,o,0.8,o,0,0.01,0.01,x,-37.12286896,174.9355342,5889743.36,1771947.21,8,1,PlPtH.sed,Pliocene to Holocene undifferentiated Takaanini Formation
+SCPT,192483,x,3,o,0.8,o,0,0.01,0.01,x,-37.12250197,174.9359692,5889783.29,1771986.69,8,1,PlPtH.sed,Pliocene to Holocene undifferentiated Takaanini Formation
+SCPT,195188,x,3.1,o,0.79,o,0,0.01,0.01,x,-36.95503683,174.8029422,5908596.21,1760520.05,8,1,PlPtH.sed,Pliocene to Holocene undifferentiated Takaanini Formation
+SCPT,195941,x,3,o,0.75,o,0,0.01,0.01,x,-37.21102988,174.9134581,5880001.39,1769788.4,8,2,Q5+Q2.und,OIS5+-OIS2 (Middle Pleistocene to Late Pleistocene) river and hill slope deposits
+SCPT,196093,x,3,o,0.79,o,1.5,1.51,0.01,x,-45.03527605,168.7483671,5004330.88,1265112.51,1,1,Q1.lakslt,OIS1 (Holocene) lake deposits
+SCPT,205817,x,0.39,o,0.8,x,0,0,0.01,x,-37.695901,176.06498,5823502.31,1870237.45,6,2,mQ.snd,OIS5+ (Early Pleistocene to Middle Pleistocene) river deposits
+SCPT,205818,x,0.38,o,0.8,x,0,0,0.01,x,-37.695946,176.06506,5823497.12,1870244.97,6,2,mQ.snd,OIS5+ (Early Pleistocene to Middle Pleistocene) river deposits
+SCPT,217000,x,0,o,0.8,o,0,0,0.01,x,-37.66565,175.507639,5828321.46,1821177.42,7,2,Q3Q2.alvpum,OIS3-OIS2 (Late Pleistocene) river deposits (Hinuera Formation)
+SDMT,66983,66982,1,o,0.8,x,x,0.01,0.01,x,-36.96135191,174.7762089,5907940,1758127,8,1,Q1.alvgvl6,OIS1 (Holocene) river deposits of Tauranga Group
+SDMT,66984,66982,1,o,0.8,x,x,0.01,0.01,x,-36.96139696,174.77621,5907940,1758127,8,1,Q1.alvgvl6,OIS1 (Holocene) river deposits of Tauranga Group
+SDMT,92524,91919,7.8,o,0.81,o,0,0,0.01,x,-37.81417975,175.3419468,5812220,1806149,7,2,Q3Q2.alvpum,OIS3-OIS2 (Late Pleistocene) river deposits (Hinuera Formation)
+SDMT,92525,91920,0,o,0.81,o,0,0,0.01,x,-37.81467481,175.3424281,5812160,1806190,7,2,Q3Q2.alvpum,OIS3-OIS2 (Late Pleistocene) river deposits (Hinuera Formation)
+SDMT,92526,91925,6.1,o,0.81,o,0,0,0.01,x,-37.69950771,175.2452876,5825151,1797944,7,999,lPlQ6.alvsnd,Undifferentiated Walton Subgroup alluvium
+SDMT,92527,91926,3.4,o,0.81,o,0,0,0.01,x,-37.70537019,175.2511698,5824489,1798447,7,2,Q2.alvgvl,OIS2 (Late Pleistocene) river deposits
+SDMT,92534,91941,2.3,o,0.81,o,0,0,0.01,x,-37.74725903,175.3073666,5819720,1803286,7,1,Q1.swp,OIS1 (Holocene) swamp deposits
+SDMT,92535,91949,3.2,o,0.81,o,0,0,0.01,x,-37.76110836,175.318444,5818158,1804225,7,999,lPlQ6.alvsnd,Undifferentiated Walton Subgroup alluvium
+SDMT,92536,91950,0,o,0.81,o,0,0,0.01,x,-37.7610017,175.3188266,5818169,1804259,7,999,lPlQ6.alvsnd,Undifferentiated Walton Subgroup alluvium
+SDMT,92537,91951,3.4,o,0.81,o,0,0,0.01,x,-37.77044692,175.3306329,5817095,1805273,7,1,Q1.swp,OIS1 (Holocene) swamp deposits
+SDMT,92538,91952,3.4,o,0.81,o,1.3,0,0.01,x,-37.77090352,175.3307834,5817044,1805285,7,1,Q1.swp,OIS1 (Holocene) swamp deposits
+SDMT,92540,91956,1.8,o,0.81,o,0,0,0.01,x,-37.792829,175.3439068,5814614,1806356,7,1,Q1.alvgvl,OIS1 (Holocene) river deposits
+SDMT,92541,91956,1.8,o,0.81,o,0,0,0.01,x,-37.79254624,175.3436253,5814614,1806356,7,1,Q1.alvgvl,OIS1 (Holocene) river deposits
+SDMT,92542,91957,5.4,o,0.81,o,0,0,0.01,x,-37.79357053,175.345134,5814495,1806488,7,1,Q1.alvgvl,OIS1 (Holocene) river deposits
+SDMT,92543,91960,10.4,o,0.81,o,0,0,0.01,x,-37.80994518,175.3437211,5812683,1806315,7,1,Q1.alvgvl,OIS1 (Holocene) river deposits
+SDMT,92545,91962,4.2,o,0.81,o,0,0,0.01,x,-37.8164894,175.3431671,5811957,1806250,7,2,Q3Q2.alvpum,OIS3-OIS2 (Late Pleistocene) river deposits (Hinuera Formation)
+SDMT,92546,91963,9.7,o,0.81,o,0,0,0.01,x,-37.81647864,175.3423489,5811957,1806176,7,2,Q3Q2.alvpum,OIS3-OIS2 (Late Pleistocene) river deposits (Hinuera Formation)
+SDMT,92547,91964,5.43,o,0.81,o,0,0,0.01,x,-37.79026501,175.3409756,5814873,1806127,7,2,Q3Q2.alvpum,OIS3-OIS2 (Late Pleistocene) river deposits (Hinuera Formation)
+SDMT,92539,91968,2.8,o,0.81,o,0,0,0.01,x,-37.77745578,175.3339184,5816307,1805559,7,1,Q1.swp,OIS1 (Holocene) swamp deposits
+SDMT,92544,91971,4.3,o,0.81,o,0,0,0.01,x,-37.81062086,175.3432768,5812590,1806262,7,1,Q1.alvgvl,OIS1 (Holocene) river deposits
+SDMT,92548,91971,4.3,o,0.81,o,0,0,0.01,x,-37.81079467,175.343146,5812590,1806262,7,1,Q1.alvgvl,OIS1 (Holocene) river deposits
+SDMT,92549,91972,3.2,o,0.81,o,0,0,0.01,x,-37.80964524,175.3443023,5812713,1806369,7,1,Q1.alvgvl,OIS1 (Holocene) river deposits
+SDMT,92554,91980,5.5,o,0.81,o,1.5,0,0.01,x,-37.79008624,175.3411744,5814891,1806146,7,2,Q3Q2.alvpum,OIS3-OIS2 (Late Pleistocene) river deposits (Hinuera Formation)
+SDMT,92555,91981,0.7,o,0.81,o,0,0,0.01,x,-37.76641788,175.3265787,5817550,1804928,7,1,Q1.swp,OIS1 (Holocene) swamp deposits
+SDMT,92556,91982,0.7,o,0.81,o,0,0,0.01,x,-37.76649217,175.3264675,5817543,1804917,7,1,Q1.swp,OIS1 (Holocene) swamp deposits
+SDMT,92557,91983,0.7,o,0.81,o,0,0,0.01,x,-37.76637106,175.3266681,5817556,1804935,7,1,Q1.swp,OIS1 (Holocene) swamp deposits
+SDMT,100703,100699,9.5,o,0.8,o,x,0.01,0.01,x,-37.68911203,175.1836813,5826425.17,1792524.77,7,1,Q1.swp,OIS1 (Holocene) swamp deposits
+SDMT,122141,121811,0,o,0.81,o,0,0,0.01,x,-37.69200133,176.2389307,5823461.04,1885579.14,6,1,Q1.swp,OIS1 (Holocene) swamp deposits
+SDMT,156436,121825,0,o,0.8,x,0,0,0.01,x,-37.68170598,176.1694188,5824771.13,1879508,6,2,mQ.snd,OIS5+ (Early Pleistocene to Middle Pleistocene) river deposits
+SDMT,123178,123151,2.8,o,0.79,o,8,8.01,0.01,x,-36.83850719,174.7579103,5921596.9,1756745.61,8,1,Q1.anteng,OIS1 (Holocene) engineered fill
+SDMT,123208,123167,1.74,o,0.8,o,1.5,1.51,0.01,x,-36.83852247,174.7559557,5921602.3,1756573.1,8,1,Q1.anteng,OIS1 (Holocene) engineered fill
+SDMT,167294,126784,0,o,0.85,o,1.5,0,0.01,x,-36.86789512,174.7627939,5918328.84,1757129.19,8,1,Q1.anteng,OIS1 (Holocene) engineered fill
+SDMT,139897,139730,1.5,o,0.81,o,0.8,0,0.01,x,-37.791576,175.291416,5814839.69,1801778.78,7,2,Q3Q2.alvpum,OIS3-OIS2 (Late Pleistocene) river deposits (Hinuera Formation)
+SDMT,139896,139731,3.5,o,0.81,o,0.4,0,0.01,x,-37.79169366,175.2913497,5814824.16,1801778.18,7,2,Q3Q2.alvpum,OIS3-OIS2 (Late Pleistocene) river deposits (Hinuera Formation)
+SDMT,141748,141746,1.6,o,0.8,o,0,0.01,0.01,x,-36.66293171,174.4335251,5941561.32,1728112.93,8,1,Q1.alvgvl6,OIS1 (Holocene) river deposits of Tauranga Group
+SDMT,156435,156427,2.5,o,0.81,o,1.5,0,0.01,x,-37.6816554,176.1689783,5824769.66,1879483.17,6,2,mQ.snd,OIS5+ (Early Pleistocene to Middle Pleistocene) river deposits
+SDMT,156437,156429,1.9,o,0.81,o,1.5,0,0.01,x,-37.68197314,176.1691442,5824741.86,1879474.44,6,2,mQ.snd,OIS5+ (Early Pleistocene to Middle Pleistocene) river deposits
+SDMT,156438,156430,3.5,o,0.81,o,1.5,0,0.01,x,-37.68224176,176.1690137,5824712.43,1879465.63,6,2,mQ.snd,OIS5+ (Early Pleistocene to Middle Pleistocene) river deposits
+SDMT,178944,163043,10.7,o,0.8,o,0,0,0.01,x,-37.71002831,176.1003606,5821835.34,1873298.38,6,1,Q1.alvgvl,OIS1 (Holocene) river deposits
+SDMT,178947,163107,2.1,o,0.8,o,0,0,0.01,x,-37.71232476,176.1036423,5821572.43,1873585.18,6,1,Q1.alvgvl,OIS1 (Holocene) river deposits
+SDMT,183366,185461,0,o,0.8,x,0,0,0.01,x,-37.704813,176.122765,5822310,1875296,6,4,Q8.ign7,"Chimp Formation ignimbrite of Ohakuri, Kapenga and Rotorua Volcanic Centres"
+SDMT,173187,192322,0,o,0.8,o,0,0,0.01,x,-37.71743628,176.3207217,5820350.11,1892717.18,6,1,Q1.bch,OIS1 (Holocene) ocean beach deposits
+SCPT,218529,x,0.9,o,0.79,o,0,0.01,0.01,x,-36.882485,174.915826,5916450.28,1770733.61,8,999,eMi.sst7,East Coast Bays Formation of Warkworth Subgroup (Waitemata Group)
+SCPT,218970,x,1.1,o,0.75,o,0,0.01,0.01,x,-36.789003,174.772845,5927067.946,1758182.767,8,1,PlPtH.sed,Pliocene to Holocene undifferentiated Takaanini Formation
+SCPT,229870,x,2,o,0.75,o,0,0.01,0.01,x,-36.892609,174.685413,5915714.54,1750178.16,8,1,PlPtH.sed,Pliocene to Holocene undifferentiated Takaanini Formation
+SCPT,234267,x,11.7,o,0.79,o,0,0,0.01,x,-38.076356,176.722176,5779167.18,1926513.43,6,1,Q1.fldsnd,OIS1 (Holocene) lake breakout deposits from Okataina Volcanic Centre
+SCPT,240353,x,0,o,0.8,x,0,0.01,0.01,x,-37.793297,175.285985,5814657.32,1801278.83,7,2,Q14+Q12.alvsnd,OIS14+-OIS12 (Early Pleistocene to Middle Pleistocene) river deposits and ignimbrite
